@@ -17,7 +17,23 @@ const REF_LOAN = "REF_LOAN";
 
 //ACTIONS..>>
 export function createLoanTypeAction(payload) {
-  return { type: LOAN_TYPE_CREATE, payload: payload };
+  // return { type: LOAN_TYPE_CREATE, payload: payload };
+
+  return async (dispatch) => {
+    // WE HV TO CALL THE SPRINT1 / SPRING BOOT
+    const url = " http://localhost:8090/api/admin/addloandetails ";
+    const requestBody = { ...payload };
+
+    // HTTP Client
+    await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(requestBody),
+    });
+
+    // UPDATE THE UI
+    dispatch({ type: LOAN_TYPE_CREATE, payload: payload });
+  };
 }
 
 export function updateLoanTypeAction(payload) {
