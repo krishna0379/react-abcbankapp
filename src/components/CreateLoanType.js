@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { createLoanTypeAction } from "../redux/AdminReducer";
+import {
+  createLoanTypeAction,
+  updateLoanTypeAction,
+} from "../redux/AdminReducer";
 
 export function CreateLoanType() {
   const dispatch = useDispatch();
@@ -37,6 +40,22 @@ export function CreateLoanType() {
     setTimeout(() => setSuccessOperation(false), 4000);
 
     //reset the from after fillinfg the from..
+    setLoanType("");
+    setMinimumAge("");
+    setMaximumAge("");
+  };
+
+  const updateLoanProgram = () => {
+    dispatch(
+      updateLoanTypeAction({
+        id: state.admin.refloan.id,
+        loanType,
+        minimumAge,
+        maximumAge,
+      })
+    );
+
+    //we have to rest the from after date get updated..
     setLoanType("");
     setMinimumAge("");
     setMaximumAge("");
@@ -85,12 +104,23 @@ export function CreateLoanType() {
             />
           </div>
 
-          <input
-            type="button"
-            className="btn btn-success w-100"
-            value="Add Employee"
-            onClick={(e) => addLoanProgram(e)}
-          />
+          <div className="mb-1">
+            {state.admin.refloan.id ? (
+              <input
+                type="button"
+                className="btn btn-success w-100"
+                value="Update Loan Program Data"
+                onClick={(e) => updateLoanProgram(e)}
+              />
+            ) : (
+              <input
+                type="button"
+                className="btn btn-success w-100"
+                value="Add Loan Program Data"
+                onClick={(e) => addLoanProgram(e)}
+              />
+            )}
+          </div>
         </div>
       </div>
       <div className="col-3 col-md-3  d-none d-md-block"></div>

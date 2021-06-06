@@ -37,15 +37,52 @@ export function createLoanTypeAction(payload) {
 }
 
 export function updateLoanTypeAction(payload) {
-  return { type: LOAN_TYPE_UPDATE, payload: payload };
+  // return { type: LOAN_TYPE_UPDATE, payload: payload };
+
+  return async (dispatch) => {
+    // WE HV TO CALL THE SPRINT1 / SPRING BOOT
+    const url = `http://localhost:8090/api/admin/${payload.id}`;
+    const requestBody = { ...payload };
+
+    await fetch(url, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(requestBody),
+    });
+
+    // update the ui.
+    dispatch(updateRefLoan({}));
+  };
 }
 
 export function deleteLoanTypeAction(payload) {
-  return { type: LOAN_TYPE_DELETE, payload: payload };
+  //return { type: LOAN_TYPE_DELETE, payload: payload };
+
+  // redux thunk
+  return async (dispatch) => {
+    const url = `http://localhost:8090/api/admin/${payload.id}`;
+    await fetch(url, { method: "DELETE" });
+
+    // update the ui.
+    dispatch(getAllLoanTypeAction());
+  };
 }
 
 export function getAllLoanTypeAction(payload) {
-  return { type: LOAN_TYPE_GET_ALL, payload: payload };
+  // return { type: LOAN_TYPE_GET_ALL, payload: payload };
+  // API CALL/BACKEND CALL / REDUX-THUNK IS THERE
+  return async (dispatch) => {
+    // WE HV TO CALL THE SPRINT1 / SPRING BOOT
+    const url = "http://localhost:8090/api/admin/";
+
+    // HTTP Client / POSTMAN / SWAGGER
+    const response = await fetch(url);
+    const loanTypeList = await response.json();
+    console.log(loantypeList);
+
+    // Update the UI
+    dispatch({ type: LOAN_TYPE_GET_ALL, payload: loanTypeList });
+  };
 }
 
 export function getByIdLoanTypeAction(payload) {
@@ -73,8 +110,8 @@ export function AdminReducer(state = initState, action) {
       return { ...state, list: [...oldList] };
 
     case LOAN_TYPE_GET_ALL:
-      //todo
-      return state;
+      //updated list..>>
+      return { ...state, list: action.payload };
 
     case LOAN_GET_BY_ID:
       //todo

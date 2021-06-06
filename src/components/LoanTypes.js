@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
-import { deleteLoanTypeAction } from "../redux/AdminReducer";
+import { deleteLoanTypeAction, updateRefLoan } from "../redux/AdminReducer";
 
 export function LoanTypes() {
   const state = useSelector((state) => state);
@@ -8,8 +8,20 @@ export function LoanTypes() {
   const history = useHistory();
   console.log(state);
 
+  const [successOperation, setSuccessOperation] = useState(false);
+
   const deletLoanType = (item, index) => {
     dispatch(deleteLoanTypeAction(item));
+
+    setSuccessOperation(true);
+    setTimeout(() => setSuccessOperation(false), 3000);
+  };
+  const updateLoanType = (item) => {
+    //it will help to access thhis object from opage  only..>>
+    dispatch(updateRefLoan(item));
+
+    //from page..
+    history.push("/create-loan-type");
   };
 
   return (
@@ -19,6 +31,9 @@ export function LoanTypes() {
         <div className="col-12 col-md-8">
           <h3 className="alert alert-secondary">Loan Program</h3>
 
+          {successOperation && (
+            <div className="alert alert-success">Opeation Success</div>
+          )}
           <table className="table">
             <thead className="thead-dark">
               <tr>
@@ -33,11 +48,18 @@ export function LoanTypes() {
             <tbody>
               {[...state.admin.list].map((item, index) => (
                 <tr key={index}>
-                  <th scope="row">{item.Id}</th>
+                  <th scope="row">{index + 1}</th>
                   <td>{item.loanType}</td>
                   <td>{item.minimumAge}</td>
                   <td>{item.maximumAge}</td>
                   <td>
+                    <input
+                      type="button"
+                      onClick={() => updateLoanType(item)}
+                      value="Edit"
+                      className="btn btn-link"
+                    />
+                    /
                     <input
                       type="button"
                       value="Delete"
