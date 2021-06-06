@@ -1,6 +1,12 @@
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
-import { deleteLoanTypeAction, updateRefLoan } from "../redux/AdminReducer";
+import {
+  deleteLoanTypeAction,
+  getAllLoanTypeAction,
+  getByIdLoanTypeAction,
+  updateRefLoan,
+} from "../redux/AdminReducer";
 
 export function LoanTypes() {
   const state = useSelector((state) => state);
@@ -9,6 +15,11 @@ export function LoanTypes() {
   console.log(state);
 
   const [successOperation, setSuccessOperation] = useState(false);
+
+  //used to initilize :: read the data from api..
+  /**useEffect(() => {
+    dispatch(getAllLoanTypeAction());
+  });*/
 
   const deletLoanType = (item, index) => {
     dispatch(deleteLoanTypeAction(item));
@@ -24,12 +35,16 @@ export function LoanTypes() {
     history.push("/create-loan-type");
   };
 
+  const getLoanTypeById = (item) => {
+    dispatch(getByIdLoanTypeAction(item));
+  };
+
   return (
     <>
       <div className="row">
         <div className="col-3 col-md-2 d-none d-md-block"></div>
         <div className="col-12 col-md-8">
-          <h3 className="alert alert-secondary">Loan Program</h3>
+          <h3 className="alert alert-info">Loan Program</h3>
 
           {successOperation && (
             <div className="alert alert-success">Opeation Success</div>
@@ -37,14 +52,13 @@ export function LoanTypes() {
           <table className="table">
             <thead className="thead-dark">
               <tr>
-                <th scope="col">#ID</th>
+                <th scope="col">#LOANID</th>
                 <th scope="col">LOANTYPE</th>
                 <th scope="col">MINIMUMAGE</th>
                 <th scope="col">MAXIMUMAGE</th>
                 <th scope="col">Actions</th>
               </tr>
             </thead>
-
             <tbody>
               {[...state.admin.list].map((item, index) => (
                 <tr key={index}>
@@ -53,6 +67,13 @@ export function LoanTypes() {
                   <td>{item.minimumAge}</td>
                   <td>{item.maximumAge}</td>
                   <td>
+                    <input
+                      type="button"
+                      onClick={() => getLoanTypeById(item)}
+                      value="Details"
+                      className="btn btn-link"
+                    />
+                    /
                     <input
                       type="button"
                       onClick={() => updateLoanType(item)}

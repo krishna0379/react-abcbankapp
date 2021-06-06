@@ -3,24 +3,21 @@ import { Link } from "react-router-dom";
 
 export function AppNavBar() {
   return (
-    <Navbar bg="primary" expand="true" sticky="top" variant="dark">
+    <Navbar bg="dark" expand="lg" variant="dark">
       <Navbar.Brand as={Link} to="/">
-        Admin Moduel
+        Admin module
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav>
+        <Nav className="ml-auto">
           <Nav.Link as={Link} to="/dashboard">
             Dashboard
           </Nav.Link>
           <Nav.Link as={Link} to="/create-loan-type">
-            Create Loan Type
+            Create Loan Program
           </Nav.Link>
           <Nav.Link as={Link} to="/list-loan-types">
-            Loan Types
-          </Nav.Link>
-          <Nav.Link as={Link} to="/">
-            Customer Details
+            Loan Program List
           </Nav.Link>
         </Nav>
       </Navbar.Collapse>

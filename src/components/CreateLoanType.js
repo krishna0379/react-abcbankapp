@@ -48,7 +48,7 @@ export function CreateLoanType() {
   const updateLoanProgram = () => {
     dispatch(
       updateLoanTypeAction({
-        id: state.admin.refloan.id,
+        loanId: state.admin.refloan.loanId,
         loanType,
         minimumAge,
         maximumAge,
@@ -66,7 +66,7 @@ export function CreateLoanType() {
         <div className="col-3 col-md-3 d-none d-md-block"></div>
         <div className="col-12 col-md-6">
           <h3 className="alert alert-secondary">
-            {state.admin.refloan.id
+            {state.admin.refloan.loanId
               ? "Update LoanProgram"
               : "Create LoanProgram"}
           </h3>
@@ -105,12 +105,12 @@ export function CreateLoanType() {
           </div>
 
           <div className="mb-1">
-            {state.admin.refloan.id ? (
+            {state.admin.refloan.loanId ? (
               <input
                 type="button"
                 className="btn btn-success w-100"
                 value="Update Loan Program Data"
-                onClick={(e) => updateLoanProgram(e)}
+                onClick={() => updateLoanProgram()}
               />
             ) : (
               <input

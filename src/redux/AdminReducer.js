@@ -17,11 +17,11 @@ const REF_LOAN = "REF_LOAN";
 
 //ACTIONS..>>
 export function createLoanTypeAction(payload) {
-  // return { type: LOAN_TYPE_CREATE, payload: payload };
+  //return { type: LOAN_TYPE_CREATE, payload: payload };
 
   return async (dispatch) => {
     // WE HV TO CALL THE SPRINT1 / SPRING BOOT
-    const url = " http://localhost:8090/api/admin/addloandetails ";
+    const url = " http://localhost:8090/api/admin/addloandetails/ ";
     const requestBody = { ...payload };
 
     // HTTP Client
@@ -37,11 +37,11 @@ export function createLoanTypeAction(payload) {
 }
 
 export function updateLoanTypeAction(payload) {
-  // return { type: LOAN_TYPE_UPDATE, payload: payload };
+  //return { type: LOAN_TYPE_UPDATE, payload: payload };
 
   return async (dispatch) => {
     // WE HV TO CALL THE SPRINT1 / SPRING BOOT
-    const url = `http://localhost:8090/api/admin/${payload.id}`;
+    const url = `http://localhost:8090/api/admin/${payload.loanId}`;
     const requestBody = { ...payload };
 
     await fetch(url, {
@@ -60,7 +60,7 @@ export function deleteLoanTypeAction(payload) {
 
   // redux thunk
   return async (dispatch) => {
-    const url = `http://localhost:8090/api/admin/${payload.id}`;
+    const url = `http://localhost:8090/api/admin/${payload.loanId}`;
     await fetch(url, { method: "DELETE" });
 
     // update the ui.
@@ -78,7 +78,7 @@ export function getAllLoanTypeAction(payload) {
     // HTTP Client / POSTMAN / SWAGGER
     const response = await fetch(url);
     const loanTypeList = await response.json();
-    console.log(loantypeList);
+    console.log(loanTypeList);
 
     // Update the UI
     dispatch({ type: LOAN_TYPE_GET_ALL, payload: loanTypeList });
@@ -86,7 +86,15 @@ export function getAllLoanTypeAction(payload) {
 }
 
 export function getByIdLoanTypeAction(payload) {
-  return { type: LOAN_GET_BY_ID, payload: payload };
+  //return { type: LOAN_GET_BY_ID, payload: payload };
+  return async (dispatch) => {
+    const url = `http://localhost:8090/api/admin/${payload.loanId}`;
+    const response = await fetch(url);
+    const loanObj = await response.json();
+
+    // this wil update the refemp
+    dispatch(updateRefLoan(loanObj));
+  };
 }
 
 export function updateRefLoan(payload) {
@@ -107,6 +115,7 @@ export function AdminReducer(state = initState, action) {
       const oldList = state.list;
       oldList.splice(action.payload, 1);
       console.log("OL", oldList);
+
       return { ...state, list: [...oldList] };
 
     case LOAN_TYPE_GET_ALL:
