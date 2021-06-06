@@ -6,7 +6,7 @@ import {
   updateLoanTypeAction,
 } from "../redux/AdminReducer";
 
-export function CreateLoanType() {
+export function LoanUpsert() {
   const dispatch = useDispatch();
   const history = useHistory();
   const state = useSelector((state) => state);
@@ -15,9 +15,9 @@ export function CreateLoanType() {
   const [successOperation, setSuccessOperation] = useState(false);
   const [errorOperation, setErrorOperation] = useState(false);
 
-  const [loanType, setLoanType] = useState(state.admin.loanType);
-  const [minimumAge, setMinimumAge] = useState(state.admin.minimumAge);
-  const [maximumAge, setMaximumAge] = useState(state.admin.maximumAge);
+  const [loanType, setLoanType] = useState(state.admin.refloan.loanType);
+  const [minimumAge, setMinimumAge] = useState(state.admin.refloan.minimumAge);
+  const [maximumAge, setMaximumAge] = useState(state.admin.refloan.maximumAge);
 
   const updateLoanType = (e) => setLoanType(e.target.value);
   const updateMinimumAge = (e) => setMinimumAge(e.target.value);

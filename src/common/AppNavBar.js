@@ -13,10 +13,10 @@ export function AppNavBar() {
           <Nav.Link as={Link} to="/dashboard">
             Dashboard
           </Nav.Link>
-          <Nav.Link as={Link} to="/create-loan-type">
+          <Nav.Link as={Link} to="/create-loan">
             Create Loan Program
           </Nav.Link>
-          <Nav.Link as={Link} to="/list-loan-types">
+          <Nav.Link as={Link} to="/list-loan">
             Loan Program List
           </Nav.Link>
         </Nav>

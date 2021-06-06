@@ -17,9 +17,9 @@ export function LoanTypes() {
   const [successOperation, setSuccessOperation] = useState(false);
 
   //used to initilize :: read the data from api..
-  /**useEffect(() => {
+  useEffect(() => {
     dispatch(getAllLoanTypeAction());
-  });*/
+  }, []);
 
   const deletLoanType = (item, index) => {
     dispatch(deleteLoanTypeAction(item));
@@ -32,11 +32,14 @@ export function LoanTypes() {
     dispatch(updateRefLoan(item));
 
     //from page..
-    history.push("/create-loan-type");
+    history.push("/create-loan");
   };
 
   const getLoanTypeById = (item) => {
     dispatch(getByIdLoanTypeAction(item));
+  };
+  const getAllLoanType = (item) => {
+    dispatch(getAllLoanTypeAction(item));
   };
 
   return (
@@ -94,6 +97,14 @@ export function LoanTypes() {
           </table>
         </div>
         <div className="col-3 col-md-2 d-none d-md-block"></div>
+        <div>
+          <input
+            type="button"
+            value="Get all"
+            onClick={() => getAllLoanType()}
+            className=" btn btn-primary"
+          />
+        </div>
       </div>
     </>
   );

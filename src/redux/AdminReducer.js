@@ -1,10 +1,7 @@
 const initState = {
-  admin: {},
   list: [],
 
   refloan: {},
-
-  sampleList: ["HomeLoan", "CarLoan", "BussinessLoan", "PersonalLoan"],
 };
 // admin actions..>>
 const LOAN_TYPE_CREATE = "LOAN_TYPE_CREATE";

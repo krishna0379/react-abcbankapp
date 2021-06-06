@@ -2,9 +2,9 @@ import logo from "./logo.svg";
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { AppNavBar } from "./common/AppNavBar";
-import { LoanTypes } from "./components/LoanTypes";
 import { Dashboard } from "./components/Dashboard";
-import { CreateLoanType } from "./components/CreateLoanType";
+import { LoanUpsert } from "./components/LoanUpsert";
+import { LoanTypes } from "./components/LoanList";
 
 function App() {
   return (
@@ -16,12 +16,12 @@ function App() {
           <Dashboard />
         </Route>
 
-        <Route path="/create-loan-type">
-          <CreateLoanType />
+        <Route path="/create-loan">
+          <LoanUpsert />
         </Route>
 
-        <Route path="/list-loan-types">
-          <LoanTypes />
+        <Route path="/list-loan">
+          <LoanTypes/>
         </Route>
 
         <Route exact path="/">
