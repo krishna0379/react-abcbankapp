@@ -65,7 +65,7 @@ export function LoanTypes() {
             <tbody>
               {[...state.admin.list].map((item, index) => (
                 <tr key={index}>
-                  <th scope="row">{index + 1}</th>
+                  <th scope="row">{item.loanId}</th>
                   <td>{item.loanType}</td>
                   <td>{item.minimumAge}</td>
                   <td>{item.maximumAge}</td>
@@ -97,14 +97,6 @@ export function LoanTypes() {
           </table>
         </div>
         <div className="col-3 col-md-2 d-none d-md-block"></div>
-        <div>
-          <input
-            type="button"
-            value="Get all"
-            onClick={() => getAllLoanType()}
-            className=" btn btn-primary"
-          />
-        </div>
       </div>
     </>
   );
