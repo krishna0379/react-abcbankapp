@@ -33,7 +33,7 @@ export function LoanTypes() {
             <tbody>
               {[...state.admin.list].map((item, index) => (
                 <tr key={index}>
-                  <th scope="row">{item.loanId}</th>
+                  <th scope="row">{item.Id}</th>
                   <td>{item.loanType}</td>
                   <td>{item.minimumAge}</td>
                   <td>{item.maximumAge}</td>
