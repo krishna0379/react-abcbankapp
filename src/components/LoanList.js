@@ -47,10 +47,12 @@ export function LoanTypes() {
       <div className="row">
         <div className="col-3 col-md-2 d-none d-md-block"></div>
         <div className="col-12 col-md-8">
-          <h3 className="alert alert-info">Loan Program</h3>
+          <h3 className=" alert alert-info text-center p-3 m-2">
+            Loan Program
+          </h3>
 
           {successOperation && (
-            <div className="alert alert-success">Opeation Success</div>
+            <div className="alert alert-danger">Opeation Delete Success</div>
           )}
           <table className="table">
             <thead className="thead-dark">
@@ -74,14 +76,14 @@ export function LoanTypes() {
                       type="button"
                       onClick={() => updateLoanType(item)}
                       value="Edit"
-                      className="btn btn-link"
+                      className="btn-warning"
                     />
                     /
                     <input
                       type="button"
                       value="Delete"
                       onClick={() => deletLoanType(item, index)}
-                      className="btn btn-link text-danger"
+                      className="btn-danger"
                     />
                   </td>
                 </tr>

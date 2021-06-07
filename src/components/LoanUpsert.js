@@ -55,6 +55,9 @@ export function LoanUpsert() {
       })
     );
 
+    setSuccessOperation(true);
+    setTimeout(() => setSuccessOperation(false), 4000);
+
     //we have to rest the from after date get updated..
     setLoanType("");
     setMinimumAge("");
@@ -108,7 +111,7 @@ export function LoanUpsert() {
             {state.admin.refloan.loanId ? (
               <input
                 type="button"
-                className="btn btn-success w-100"
+                className="btn btn-warning w-100"
                 value="Update Loan Program Data"
                 onClick={() => updateLoanProgram()}
               />

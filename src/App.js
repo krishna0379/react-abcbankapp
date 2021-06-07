@@ -11,8 +11,8 @@ function App() {
     <Router>
       <AppNavBar />
 
-      <Switch>
-        <Route path="/dashboard">
+      <Switch >
+        <Route path="/dashboard" >
           <Dashboard />
         </Route>
 
