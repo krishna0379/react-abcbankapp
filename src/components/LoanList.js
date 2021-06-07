@@ -25,7 +25,7 @@ export function LoanTypes() {
     dispatch(deleteLoanTypeAction(item));
 
     setSuccessOperation(true);
-    setTimeout(() => setSuccessOperation(false), 3000);
+    setTimeout(() => setSuccessOperation(false), 4000);
   };
   const updateLoanType = (item) => {
     //it will help to access thhis object from opage  only..>>
@@ -70,13 +70,6 @@ export function LoanTypes() {
                   <td>{item.minimumAge}</td>
                   <td>{item.maximumAge}</td>
                   <td>
-                    <input
-                      type="button"
-                      onClick={() => getLoanTypeById(item)}
-                      value="Details"
-                      className="btn btn-link"
-                    />
-                    /
                     <input
                       type="button"
                       onClick={() => updateLoanType(item)}
