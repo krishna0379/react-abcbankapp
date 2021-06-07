@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export function AppNavBar() {
   return (
-    <Navbar bg="primary" expand="lg" variant="light">
+    <Navbar bg="primary" expand="lg" variant="light" sticky="top">
       <Navbar.Brand as={Link} to="/">
         Admin Module
       </Navbar.Brand>
@@ -16,7 +16,7 @@ export function AppNavBar() {
           <Nav.Link as={Link} to="/create-loan">
             Create Loan Program
           </Nav.Link>
-          <Nav.Link as={Link} to="/list-loan" className="bg-primary">
+          <Nav.Link as={Link} to="/list-loan">
             Loan Program List
           </Nav.Link>
         </Nav>

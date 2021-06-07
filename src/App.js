@@ -8,27 +8,29 @@ import { LoanTypes } from "./components/LoanList";
 
 function App() {
   return (
-    <Router>
-      <AppNavBar />
+    <div>
+      <Router>
+        <AppNavBar />
 
-      <Switch >
-        <Route path="/dashboard" >
-          <Dashboard />
-        </Route>
+        <Switch>
+          <Route path="/dashboard">
+            <Dashboard />
+          </Route>
 
-        <Route path="/create-loan">
-          <LoanUpsert />
-        </Route>
+          <Route path="/create-loan">
+            <LoanUpsert />
+          </Route>
 
-        <Route path="/list-loan">
-          <LoanTypes/>
-        </Route>
+          <Route path="/list-loan">
+            <LoanTypes />
+          </Route>
 
-        <Route exact path="/">
-          <Dashboard />
-        </Route>
-      </Switch>
-    </Router>
+          <Route exact path="/">
+            <Dashboard />
+          </Route>
+        </Switch>
+      </Router>
+    </div>
   );
 }
 

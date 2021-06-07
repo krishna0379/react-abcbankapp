@@ -1,12 +1,12 @@
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import {
+  getAllLoanTypeAction,
+  getByIdLoanTypeAction,
+} from "../redux/AdminReducer";
 
 export function Dashboard() {
-  const state = useSelector((state) => state);
-  const dispatch = useDispatch();
-  const history = useHistory();
-  console.log(state);
-
   return (
     <div>
       <div>
@@ -21,7 +21,7 @@ export function Dashboard() {
           <div>
             <h1>Home Loan </h1>
             <p> take the loan at minimum price and enjoy the benefits</p>
-            <button className="btn btn-primary">Details</button>
+            <input type="button" value="Deatils" className="btn btn-primary" />
           </div>
           <div>
             <h1>Car Loan</h1>
