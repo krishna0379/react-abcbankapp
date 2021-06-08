@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import {
@@ -9,6 +9,7 @@ import {
 export function LoanUpsert() {
   const dispatch = useDispatch();
   const history = useHistory();
+  const fromEL = useRef();
   const state = useSelector((state) => state);
   console.log(state);
 
@@ -26,23 +27,34 @@ export function LoanUpsert() {
   const addLoanProgram = (e) => {
     e.preventDefault();
     console.log(loanType, minimumAge, maximumAge);
-    //this will call the redux action..>>
-    dispatch(
-      createLoanTypeAction({
-        loanType,
-        minimumAge,
-        maximumAge,
-      })
-    );
 
-    // A1 sucess
-    setSuccessOperation(true);
-    setTimeout(() => setSuccessOperation(false), 4000);
+    console.log(fromEL);
+    console.log(fromEL.current.checkValidity());
 
-    //reset the from after fillinfg the from..
-    setLoanType("");
-    setMinimumAge("");
-    setMaximumAge("");
+    if (fromEL.current.checkValidity() === false) {
+      //it will handel the flase case..>>
+      e.preventDefault();
+      e.stopPropagation();
+      fromEL.current.classList.add("was-validated");
+    } else {
+      //this will call the redux action..>>
+      dispatch(
+        createLoanTypeAction({
+          loanType,
+          minimumAge,
+          maximumAge,
+        })
+      );
+
+      // A1 sucess
+      setSuccessOperation(true);
+      setTimeout(() => setSuccessOperation(false), 4000);
+
+      //reset the from after fillinfg the from..
+      setLoanType("");
+      setMinimumAge("");
+      setMaximumAge("");
+    }
   };
 
   const updateLoanProgram = () => {
@@ -79,51 +91,73 @@ export function LoanUpsert() {
             <div className="alert alert-success">Opeation Success</div>
           )}
 
-          <div className="mb-1">
-            <input
-              type="text"
-              value={loanType}
-              onChange={(e) => updateLoanType(e)}
-              className="form-control"
-              placeholder="Enter Loan Type"
-            />
-          </div>
-          <div className="mb-1">
-            <input
-              type="text"
-              value={minimumAge}
-              onChange={(e) => updateMinimumAge(e)}
-              className="form-control"
-              placeholder="Enter Minimum Age"
-            />
-          </div>
-          <div className="mb-1">
-            <input
-              type="text"
-              value={maximumAge}
-              onChange={(e) => updateMaximumAge(e)}
-              className="form-control"
-              placeholder="Enter Maximum Age"
-            />
-          </div>
+          <form ref={fromEL} class="needs-validation" novalidate>
+            <div className="mb-1">
+              <input
+                type="text"
+                value={loanType}
+                onChange={(e) => updateLoanType(e)}
+                className="form-control"
+                placeholder="Enter Loan Type"
+                maxLength="12"
+                minLength="3"
+                required
+              />
+              <div class="invalid-feedback">
+                Kindly Enter The Valid Loan Type
+              </div>
+            </div>
 
-          <div className="mb-1">
-            {state.admin.refloan.loanId ? (
+            <div className="mb-1">
               <input
-                type="button"
-                className="btn btn-warning w-100"
-                value="Update Loan Program Data"
-                onClick={() => updateLoanProgram()}
+                type="number"
+                value={minimumAge}
+                onChange={(e) => updateMinimumAge(e)}
+                className="form-control"
+                placeholder="Enter Minimum Age"
+                max="99"
+                min="09"
+                required
               />
-            ) : (
+              <div class="invalid-feedback">
+                Kindly Enter Valid The Minimum Age
+              </div>
+            </div>
+
+            <div className="mb-1">
               <input
-                type="button"
-                className="btn btn-success w-100"
-                value="Add Loan Program Data"
-                onClick={(e) => addLoanProgram(e)}
+                type="number"
+                value={maximumAge}
+                onChange={(e) => updateMaximumAge(e)}
+                className="form-control"
+                placeholder="Enter Maximum Age"
+                max="99"
+                min="09"
+                required
               />
-            )}
-          </div>
+              <div class="invalid-feedback">
+                Kindly Enter Valid The Maximum Age
+              </div>
+            </div>
+
+            <div className="mb-1">
+              {state.admin.refloan.loanId ? (
+                <input
+                  type="button"
+                  className="btn btn-warning w-100"
+                  value="Update Loan Program Data"
+                  onClick={() => updateLoanProgram()}
+                />
+              ) : (
+                <input
+                  type="button"
+                  className="btn btn-success w-100"
+                  value="Add Loan Program Data"
+                  onClick={(e) => addLoanProgram(e)}
+                />
+              )}
+            </div>
+          </form>
         </div>
       </div>
       <div className="col-3 col-md-3  d-none d-md-block"></div>
