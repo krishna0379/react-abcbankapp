@@ -103,6 +103,7 @@ export function LoanUpsert() {
                 minLength="3"
                 required
               />
+              <div class="valid-feedback">Looks good!</div>
               <div class="invalid-feedback">
                 Kindly Enter The Valid Loan Type
               </div>
@@ -115,10 +116,11 @@ export function LoanUpsert() {
                 onChange={(e) => updateMinimumAge(e)}
                 className="form-control"
                 placeholder="Enter Minimum Age"
-                max="99"
-                min="09"
+                max="69"
+                min="15"
                 required
               />
+              <div class="valid-feedback">Looks good!</div>
               <div class="invalid-feedback">
                 Kindly Enter Valid The Minimum Age
               </div>
@@ -131,10 +133,11 @@ export function LoanUpsert() {
                 onChange={(e) => updateMaximumAge(e)}
                 className="form-control"
                 placeholder="Enter Maximum Age"
-                max="99"
-                min="09"
+                max="69"
+                min="29"
                 required
               />
+              <div class="valid-feedback">Looks good!</div>
               <div class="invalid-feedback">
                 Kindly Enter Valid The Maximum Age
               </div>
