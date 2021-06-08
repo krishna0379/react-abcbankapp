@@ -43,56 +43,58 @@ export function LoanTypes() {
   };
 
   return (
-    <>
-      <div className="row">
-        <div className="col-3 col-md-2 d-none d-md-block"></div>
-        <div className="col-12 col-md-8">
-          <h3 className=" alert alert-info text-center p-3 m-2">
-            Loan Program
-          </h3>
+    <div class="container-xxl loan-list">
+      <>
+        <div className="row">
+          <div className="col-3 col-md-2 d-none d-md-block"></div>
+          <div className="col-12 col-md-8">
+            <h3 className=" alert alert-info text-center p-3 m-2">
+              Loan Program
+            </h3>
 
-          {successOperation && (
-            <div className="alert alert-danger">Opeation Delete Success</div>
-          )}
-          <table className="table">
-            <thead className="thead-dark">
-              <tr>
-                <th scope="col">#LOANID</th>
-                <th scope="col">LOANTYPE</th>
-                <th scope="col">MINIMUMAGE</th>
-                <th scope="col">MAXIMUMAGE</th>
-                <th scope="col">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {[...state.admin.list].map((item, index) => (
-                <tr key={index}>
-                  <th scope="row">{item.loanId}</th>
-                  <td>{item.loanType}</td>
-                  <td>{item.minimumAge}</td>
-                  <td>{item.maximumAge}</td>
-                  <td>
-                    <input
-                      type="button"
-                      onClick={() => updateLoanType(item)}
-                      value="Edit"
-                      className="btn-warning"
-                    />
-                    /
-                    <input
-                      type="button"
-                      value="Delete"
-                      onClick={() => deletLoanType(item, index)}
-                      className="btn-danger"
-                    />
-                  </td>
+            {successOperation && (
+              <div className="alert alert-danger">Opeation Delete Success</div>
+            )}
+            <table className="table">
+              <thead className="table table-bordered table-dark">
+                <tr>
+                  <th scope="col">#LOANID</th>
+                  <th scope="col">LOANTYPE</th>
+                  <th scope="col">MINIMUMAGE</th>
+                  <th scope="col">MAXIMUMAGE</th>
+                  <th scope="col">Actions</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody className="table table-bordered table-success">
+                {[...state.admin.list].map((item, index) => (
+                  <tr key={index}>
+                    <th scope="row">{item.loanId}</th>
+                    <td>{item.loanType}</td>
+                    <td>{item.minimumAge}</td>
+                    <td>{item.maximumAge}</td>
+                    <td>
+                      <input
+                        type="button"
+                        onClick={() => updateLoanType(item)}
+                        value="Edit"
+                        className="btn-warning"
+                      />
+                      /
+                      <input
+                        type="button"
+                        value="Delete"
+                        onClick={() => deletLoanType(item, index)}
+                        className="btn-danger"
+                      />
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div className="col-3 col-md-2 d-none d-md-block"></div>
         </div>
-        <div className="col-3 col-md-2 d-none d-md-block"></div>
-      </div>
-    </>
+      </>
+    </div>
   );
 }

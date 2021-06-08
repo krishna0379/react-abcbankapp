@@ -5,6 +5,7 @@ import { AppNavBar } from "./common/AppNavBar";
 import { Dashboard } from "./components/Dashboard";
 import { LoanUpsert } from "./components/LoanUpsert";
 import { LoanTypes } from "./components/LoanList";
+import { CustomerList } from "./components/CustomerList";
 
 function App() {
   return (
@@ -23,6 +24,10 @@ function App() {
 
           <Route path="/list-loan">
             <LoanTypes />
+          </Route>
+
+          <Route path="/customer-list">
+            <CustomerList />
           </Route>
 
           <Route exact path="/">
