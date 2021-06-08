@@ -92,7 +92,7 @@ export function LoanUpsert() {
           )}
 
           <form ref={fromEL} class="needs-validation" novalidate>
-            <div className="mb-1">
+            <div className="mb-2">
               <input
                 type="text"
                 value={loanType}
@@ -108,7 +108,7 @@ export function LoanUpsert() {
               </div>
             </div>
 
-            <div className="mb-1">
+            <div className="mb-2">
               <input
                 type="number"
                 value={minimumAge}
@@ -124,7 +124,7 @@ export function LoanUpsert() {
               </div>
             </div>
 
-            <div className="mb-1">
+            <div className="mb-2">
               <input
                 type="number"
                 value={maximumAge}
