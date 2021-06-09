@@ -8,7 +8,7 @@ import {
   updateRefLoan,
 } from "../redux/AdminReducer";
 
-export function LoanTypes() {
+export function LoanList() {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const history = useHistory();

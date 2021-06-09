@@ -4,8 +4,8 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { AppNavBar } from "./common/AppNavBar";
 import { Dashboard } from "./components/Dashboard";
 import { LoanUpsert } from "./components/LoanUpsert";
-import { LoanTypes } from "./components/LoanList";
 import { CustomerList } from "./components/CustomerList";
+import { LoanList } from "./components/LoanList";
 
 function App() {
   return (
@@ -23,7 +23,7 @@ function App() {
           </Route>
 
           <Route path="/list-loan">
-            <LoanTypes />
+            <LoanList />
           </Route>
 
           <Route path="/customer-list">
