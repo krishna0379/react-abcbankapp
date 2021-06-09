@@ -99,7 +99,7 @@ export function LoanUpsert() {
                 onChange={(e) => updateLoanType(e)}
                 className="form-control"
                 placeholder="Enter Loan Type"
-                maxLength="12"
+                maxLength="14"
                 minLength="3"
                 required
               />
