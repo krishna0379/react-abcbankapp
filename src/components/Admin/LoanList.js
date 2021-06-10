@@ -4,7 +4,6 @@ import { useHistory } from "react-router";
 import {
   deleteLoanTypeAction,
   getAllLoanTypeAction,
-  getByIdLoanTypeAction,
   updateRefLoan,
 } from "../../redux/AdminReducer";
 
@@ -32,14 +31,7 @@ export function LoanList() {
     dispatch(updateRefLoan(item));
 
     //from page..
-    history.push("/create-loan");
-  };
-
-  const getLoanTypeById = (item) => {
-    dispatch(getByIdLoanTypeAction(item));
-  };
-  const getAllLoanType = (item) => {
-    dispatch(getAllLoanTypeAction(item));
+    history.push("/admin/create-loan");
   };
 
   return (
@@ -51,6 +43,12 @@ export function LoanList() {
             <h3 className=" alert alert-info text-center p-3 m-2">
               Loan Program
             </h3>
+
+            {state.admin.error && (
+              <div className="alert alert-danger">
+                Sever is offline, Please Wait a Moment
+              </div>
+            )}
 
             {successOperation && (
               <div className="alert alert-danger">Opeation Delete Success</div>

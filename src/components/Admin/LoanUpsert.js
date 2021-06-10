@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+
 import {
   createLoanTypeAction,
   updateLoanTypeAction,
@@ -8,13 +8,11 @@ import {
 
 export function LoanUpsert() {
   const dispatch = useDispatch();
-  const history = useHistory();
   const fromEL = useRef();
   const state = useSelector((state) => state);
   console.log(state);
 
   const [successOperation, setSuccessOperation] = useState(false);
-  const [errorOperation, setErrorOperation] = useState(false);
 
   const [loanType, setLoanType] = useState(state.admin.refloan.loanType);
   const [minimumAge, setMinimumAge] = useState(state.admin.refloan.minimumAge);
@@ -80,7 +78,7 @@ export function LoanUpsert() {
       <div className="row">
         <div className="col-3 col-md-3 d-none d-md-block"></div>
         <div className="col-12 col-md-6">
-          <h3 className="alert alert-secondary">
+          <h3 className="alert alert-info">
             {state.admin.refloan.loanId
               ? "Update LoanProgram"
               : "Create LoanProgram"}

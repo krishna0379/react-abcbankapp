@@ -10,6 +10,8 @@ const LOAN_TYPE_DELETE = "LOAN_TYPE_DELETE";
 const LOAN_TYPE_GET_ALL = "LOAN_TYPE_GET_ALL";
 const LOAN_GET_BY_ID = "LOAN_GET_BY_ID";
 
+const SERVER_ERROR = "SERVER_ERROR";
+
 const REF_LOAN = "REF_LOAN";
 
 //ACTIONS..>>
@@ -69,16 +71,28 @@ export function getAllLoanTypeAction(payload) {
   // return { type: LOAN_TYPE_GET_ALL, payload: payload };
   // API CALL/BACKEND CALL / REDUX-THUNK IS THERE
   return async (dispatch) => {
-    // WE HV TO CALL THE SPRINT1 / SPRING BOOT
-    const url = "http://localhost:8090/api/admin/";
+    try {
+      // it will help us to call the  backend / SPRING BOOT
+      const url = "http://localhost:8090/api/admin/";
 
-    // HTTP Client / POSTMAN / SWAGGER
-    const response = await fetch(url);
-    const loanTypeList = await response.json();
-    console.log(loanTypeList);
+      // HTTP Client / POSTMAN / SWAGGER
+      const response = await fetch(url);
+      const loanTypeList = await response.json();
+      console.log(loanTypeList);
 
-    // Update the UI
-    dispatch({ type: LOAN_TYPE_GET_ALL, payload: loanTypeList });
+      //we are geting the data server
+      localStorage.setItem("loanTypeList", JSON.stringify(loanTypeList));
+
+      // Update the UI
+      dispatch({ type: LOAN_TYPE_GET_ALL, payload: loanTypeList });
+    } catch (error) {
+      console.log(error);
+      dispatch({ type: SERVER_ERROR, payload: true });
+
+      const localLoanStringList = localStorage.getItem("loanTypeList");
+      const localLoanTypeList = JSON.parse(localLoanStringList);
+      dispatch({ type: LOAN_TYPE_GET_ALL, payload: localLoanTypeList });
+    }
   };
 }
 

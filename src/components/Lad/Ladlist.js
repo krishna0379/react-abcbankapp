@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router";
 import { GetAllLoanStatusAction } from "../../redux/LadReducer";
 
 export function Ladlist() {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
-  const history = useHistory();
   console.log(state);
 
   const [successOperation, setSuccessOperation] = useState(false);

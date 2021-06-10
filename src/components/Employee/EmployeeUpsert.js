@@ -1,7 +1,10 @@
 import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { createEmployeeAction } from "../../redux/EmployeeReducer";
+import { useHistory } from "react-router";
+import {
+  createEmployeeAction,
+  updateEmployeeAction,
+} from "../../redux/EmployeeReducer";
 
 export function EmployeeUpsert() {
   const dispatch = useDispatch();
@@ -28,7 +31,6 @@ export function EmployeeUpsert() {
   const [gender, setGender] = useState(state.employee.refemp.gender);
 
   const [successOperation, setSuccessOperation] = useState(false);
-  const [errorOperation, setErrorOperation] = useState(false);
 
   const updateFirstName = (e) => setFirstName(e.target.value);
   const updateLastName = (e) => setLastName(e.target.value);
@@ -45,7 +47,7 @@ export function EmployeeUpsert() {
 
   const addEmployee = (e) => {
     e.preventDefault();
-    //console.log(firstName, lastName, userName, password, email, mobile);
+
     console.log(fromEL);
     console.log(fromEL.current.checkValidity());
 
@@ -96,12 +98,48 @@ export function EmployeeUpsert() {
     }
   };
 
+  const updateEmployee = () => {
+    dispatch(
+      updateEmployeeAction({
+        id: state.employee.refemp.id,
+        firstName,
+        lastName,
+        email,
+        mobile,
+        loanType,
+        city,
+        stateName,
+        nationality,
+        annualIncome,
+        gender,
+        age,
+        panNumber,
+      })
+    );
+
+    setSuccessOperation(true);
+    setTimeout(() => setSuccessOperation(false), 4000);
+
+    //we have to reset the from again ..after the data updated..
+    setFirstName("");
+    setLastName("");
+    setEmail("");
+    setMobile("");
+    setLoanType("");
+    setCity("");
+    setStateName("");
+    setNationality("");
+    setAnnualIncome("");
+    setGender("");
+    setAge("");
+    setPanNumber("");
+  };
   return (
     <div>
       <div className="row body">
         <div className="col-3 col-md-3 d-none d-md-block"></div>
         <div className="col-12 col-md-6">
-          <h3 className="alert alert-secondary">
+          <h3 className="alert alert-info">
             {state.employee.refemp.id
               ? "Update Customer Details"
               : "Customer Details For Loan Request"}
@@ -302,18 +340,18 @@ export function EmployeeUpsert() {
             </div>
 
             <div className="mb-1">
-              {state.employee.refemp.userName ? (
+              {state.employee.refemp.id ? (
                 <input
                   type="button"
-                  className="btn btn-secondary w-100"
-                  value="Update Customer"
-                  onClick={() => {}}
+                  className="btn btn-warning w-100"
+                  value="Update Customer Data"
+                  onClick={() => updateEmployee()}
                 />
               ) : (
                 <input
                   type="button"
                   className="btn btn-success w-100"
-                  value="Customer Details "
+                  value=" Submit Customer Details "
                   onClick={(e) => addEmployee(e)}
                 />
               )}
