@@ -1,41 +1,84 @@
 import logo from "./logo.svg";
 import "./App.css";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  useLocation,
+} from "react-router-dom";
+import { LadHome } from "./components/Lad/LadHome";
+import { About } from "./components/About";
+import { Contact } from "./components/Contact";
+import { EmployeeUpsert } from "./components/Employee/EmployeeUpsert";
+import { EmployeeList } from "./components/Employee/EmployeeList";
+import { Lad } from "./components/Lad/Lad";
+import { Ladlist } from "./components/Lad/Ladlist";
+import { CustomerProfile } from "./components/Lad/CustomerProfile";
+import { Footer } from "./common/Footer";
+import { Home } from "./components/Home";
+import { Dashboard } from "./components/Admin/Dashboard";
+import { LoanUpsert } from "./components/Admin/LoanUpsert";
+import { LoanList } from "./components/Admin/LoanList";
 import { AppNavBar } from "./common/AppNavBar";
-import { Dashboard } from "./components/Dashboard";
-import { LoanUpsert } from "./components/LoanUpsert";
-import { CustomerList } from "./components/CustomerList";
-import { LoanList } from "./components/LoanList";
+import { AdminHome } from "./components/Admin/AdminHome";
 
 function App() {
+  const location = useLocation();
+  console.log(location);
   return (
-    <div>
-      <Router>
-        <AppNavBar />
+    <>
+      <AppNavBar />
+      {location.pathname.includes("admin") && <AdminHome />}
+      {location.pathname.includes("lad") && <LadHome />}
 
-        <Switch>
-          <Route path="/dashboard">
-            <Dashboard />
-          </Route>
+      <Switch>
+        <Route path="/about">
+          <About />
+        </Route>
 
-          <Route path="/create-loan">
-            <LoanUpsert />
-          </Route>
+        <Route path="/contact">
+          <Contact />
+        </Route>
 
-          <Route path="/list-loan">
-            <LoanList />
-          </Route>
+        <Route path="/home/customerloanrequest">
+          <EmployeeUpsert />
+        </Route>
 
-          <Route path="/customer-list">
-            <CustomerList />
-          </Route>
+        <Route path="/admin/customer-list">
+          <EmployeeList />
+        </Route>
 
-          <Route exact path="/">
-            <Dashboard />
-          </Route>
-        </Switch>
-      </Router>
-    </div>
+        <Route path="/lad/ladlistpage">
+          <Lad />
+        </Route>
+
+        <Route path="/lad/ladpage">
+          <Ladlist />
+        </Route>
+
+        <Route path="/lad/customerpage">
+          <CustomerProfile />
+        </Route>
+
+        <Route path="/admin/dashboard">
+          <Dashboard />
+        </Route>
+
+        <Route path="/admin/create-loan">
+          <LoanUpsert />
+        </Route>
+
+        <Route path="/admin/list-loan">
+          <LoanList />
+        </Route>
+
+        <Route exact path="/">
+          <Home />
+        </Route>
+      </Switch>
+
+      <Footer />
+    </>
   );
 }
 

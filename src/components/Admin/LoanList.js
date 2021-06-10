@@ -6,7 +6,7 @@ import {
   getAllLoanTypeAction,
   getByIdLoanTypeAction,
   updateRefLoan,
-} from "../redux/AdminReducer";
+} from "../../redux/AdminReducer";
 
 export function LoanList() {
   const state = useSelector((state) => state);

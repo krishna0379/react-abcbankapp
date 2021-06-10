@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import {
   createLoanTypeAction,
   updateLoanTypeAction,
-} from "../redux/AdminReducer";
+} from "../../redux/AdminReducer";
 
 export function LoanUpsert() {
   const dispatch = useDispatch();

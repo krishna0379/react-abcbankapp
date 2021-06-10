@@ -1,29 +1,23 @@
 import { Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-export function AppNavBar() {
+export function LadNavBar() {
   return (
     <Navbar bg="dark" expand="lg" variant="dark" sticky="top">
       <Navbar.Brand as={Link} to="/">
-        ABC BANK
+        Home
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">
-          <Nav.Link as={Link} to="/">
-            HOME
+          <Nav.Link as={Link} to="/.ladpage">
+            CustomerLoanRequestDetailes
           </Nav.Link>
-          <Nav.Link as={Link} to="/lad">
-            LAD
+          <Nav.Link as={Link} to="/.ladlistpage">
+            LoanStatus
           </Nav.Link>
-          <Nav.Link as={Link} to="/about">
-            ABOUT
-          </Nav.Link>
-          <Nav.Link as={Link} to="/contact">
-            CONTACT
-          </Nav.Link>
-          <Nav.Link as={Link} to="/admin">
-            ADMIN
+          <Nav.Link as={Link} to="/.customerpage">
+            customer page
           </Nav.Link>
         </Nav>
       </Navbar.Collapse>

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
-import { getAllLoanTypeAction } from "../redux/AdminReducer";
+import { getAllLoanTypeAction } from "../../redux/AdminReducer";
 
 export function Dashboard() {
   const state = useSelector((state) => state);

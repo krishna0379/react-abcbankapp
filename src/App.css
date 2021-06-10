@@ -37,6 +37,36 @@
   margin-bottom: 25px;
 }
 
+.footer-section {
+  width: 100%;
+  height: auto;
+  padding: 70px 0 20px 0;
+  background: #00abff;
+  position: absolute;
+}
+
+.footer-section p {
+  color: white;
+}
+
+.footer-section li a {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  font-weight: 400;
+  color: white;
+  text-transform: capitalize;
+  text-align: center;
+}
+
+.footer-section h3 {
+  text-transform: uppercase;
+  color: white;
+  margin-bottom: 25px;
+  font-size: 1.2rem !important;
+  font-weight: 600;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
 .App {
   text-align: center;
 }
