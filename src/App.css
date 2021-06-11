@@ -1,3 +1,16 @@
+.about {
+  background-image: url("https://st2.depositphotos.com/3591429/10566/i/950/depositphotos_105666254-stock-photo-business-people-at-meeting-and.jpg");
+  background-size: cover;
+  height: auto;
+  width: auto;
+  color: #bbeb10;
+}
+.footer {
+  padding: 20px; /* Some padding */
+  text-align: center; /* Center text*/
+  background: #ddd; /* Grey background */
+}
+
 .body {
   height: 100%;
   z-index: 30;
@@ -27,6 +40,7 @@
   background-color: rgb(33, 49, 83);
   background-size: cover;
   height: 100vh;
+  width: fit-content;
   color: #bbeb10;
 }
 .loan-list {
