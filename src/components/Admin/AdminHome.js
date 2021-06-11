@@ -29,11 +29,6 @@ export function AdminHome() {
               Customer List
             </Nav.Link>
           </div>
-          <div className="col-3">
-            <Nav.Link as={Link} to="/admin/profile">
-              Admin profile
-            </Nav.Link>
-          </div>
         </div>
       </div>
     </div>

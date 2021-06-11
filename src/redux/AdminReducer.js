@@ -1,7 +1,7 @@
 const initState = {
   list: [],
-
   refloan: {},
+  error: false,
 };
 // admin actions..>>
 const LOAN_TYPE_CREATE = "LOAN_TYPE_CREATE";
@@ -139,6 +139,9 @@ export function AdminReducer(state = initState, action) {
 
     case REF_LOAN:
       return { ...state, refloan: action.payload };
+
+    case SERVER_ERROR:
+      return { ...state, error: action.payload };
 
     default:
       return state;

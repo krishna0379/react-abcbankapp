@@ -147,7 +147,7 @@ export function EmployeeUpsert() {
     }
   };
   return (
-    <div>
+    <div className="body">
       <div className="row body">
         <div className="col-3 col-md-3 d-none d-md-block"></div>
         <div className="col-12 col-md-6">
@@ -228,6 +228,7 @@ export function EmployeeUpsert() {
                 Kindly, Please Enter Your Valid Mobile Number
               </div>
             </div>
+
             <div className="mb-1">
               <input
                 type="text"
@@ -242,6 +243,7 @@ export function EmployeeUpsert() {
               <div class="valid-feedback">Looks good!</div>
               <div class="invalid-feedback">Kindly, Please Enter Loan Type</div>
             </div>
+
             <div className="mb-1">
               <input
                 type="text"
@@ -256,6 +258,7 @@ export function EmployeeUpsert() {
               <div class="valid-feedback">Looks good!</div>
               <div class="invalid-feedback">Kindly, Please Enter Your City</div>
             </div>
+
             <div className="mb-1">
               <input
                 type="text"
@@ -272,6 +275,7 @@ export function EmployeeUpsert() {
                 Kindly, Please Enter Your State
               </div>
             </div>
+
             <div className="mb-1">
               <input
                 type="text"
@@ -288,6 +292,7 @@ export function EmployeeUpsert() {
                 Kindly, Please Enter Your Nationality
               </div>
             </div>
+
             <div className="mb-1">
               <input
                 type="number"
@@ -304,6 +309,7 @@ export function EmployeeUpsert() {
                 Kindly, Please Enter Your Annual Income{" "}
               </div>
             </div>
+
             <div className="mb-1">
               <input
                 type="text"
@@ -320,6 +326,7 @@ export function EmployeeUpsert() {
                 Kindly, Please Enter Your Gender
               </div>
             </div>
+
             <div className="mb-1">
               <input
                 type="number"
@@ -334,6 +341,7 @@ export function EmployeeUpsert() {
               <div class="valid-feedback">Looks good!</div>
               <div class="invalid-feedback">Kindly, Please Enter Your Age</div>
             </div>
+
             <div className="mb-1">
               <input
                 type="text"

@@ -26,6 +26,7 @@ export function LoanList() {
     setSuccessOperation(true);
     setTimeout(() => setSuccessOperation(false), 4000);
   };
+
   const updateLoanType = (item) => {
     //it will help to access thhis object from opage  only..>>
     dispatch(updateRefLoan(item));
