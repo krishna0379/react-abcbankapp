@@ -98,41 +98,53 @@ export function EmployeeUpsert() {
     }
   };
 
-  const updateEmployee = () => {
-    dispatch(
-      updateEmployeeAction({
-        id: state.employee.refemp.id,
-        firstName,
-        lastName,
-        email,
-        mobile,
-        loanType,
-        city,
-        stateName,
-        nationality,
-        annualIncome,
-        gender,
-        age,
-        panNumber,
-      })
-    );
+  const updateEmployee = (e) => {
+    e.preventDefault();
 
-    setSuccessOperation(true);
-    setTimeout(() => setSuccessOperation(false), 4000);
+    console.log(fromEL);
+    console.log(fromEL.current.checkValidity());
 
-    //we have to reset the from again ..after the data updated..
-    setFirstName("");
-    setLastName("");
-    setEmail("");
-    setMobile("");
-    setLoanType("");
-    setCity("");
-    setStateName("");
-    setNationality("");
-    setAnnualIncome("");
-    setGender("");
-    setAge("");
-    setPanNumber("");
+    if (fromEL.current.checkValidity() === false) {
+      //it will handel the flase case..>>
+      e.preventDefault();
+      e.stopPropagation();
+      fromEL.current.classList.add("was-validated");
+    } else {
+      dispatch(
+        updateEmployeeAction({
+          id: state.employee.refemp.id,
+          firstName,
+          lastName,
+          email,
+          mobile,
+          loanType,
+          city,
+          stateName,
+          nationality,
+          annualIncome,
+          gender,
+          age,
+          panNumber,
+        })
+      );
+
+      setSuccessOperation(true);
+      setTimeout(() => setSuccessOperation(false), 4000);
+
+      //we have to reset the from again ..after the data updated..
+      setFirstName("");
+      setLastName("");
+      setEmail("");
+      setMobile("");
+      setLoanType("");
+      setCity("");
+      setStateName("");
+      setNationality("");
+      setAnnualIncome("");
+      setGender("");
+      setAge("");
+      setPanNumber("");
+    }
   };
   return (
     <div>
@@ -345,7 +357,7 @@ export function EmployeeUpsert() {
                   type="button"
                   className="btn btn-warning w-100"
                   value="Update Customer Data"
-                  onClick={() => updateEmployee()}
+                  onClick={(e) => updateEmployee(e)}
                 />
               ) : (
                 <input

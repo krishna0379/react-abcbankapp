@@ -55,23 +55,34 @@ export function LoanUpsert() {
     }
   };
 
-  const updateLoanProgram = () => {
-    dispatch(
-      updateLoanTypeAction({
-        loanId: state.admin.refloan.loanId,
-        loanType,
-        minimumAge,
-        maximumAge,
-      })
-    );
+  const updateLoanProgram = (e) => {
+    e.preventDefault();
+    console.log(loanType, minimumAge, maximumAge);
 
-    setSuccessOperation(true);
-    setTimeout(() => setSuccessOperation(false), 4000);
+    console.log(fromEL);
+    console.log(fromEL.current.checkValidity());
+    if (fromEL.current.checkValidity() === false) {
+      e.preventDefault();
+      e.stopPropagation();
+      fromEL.current.classList.add("was-validated");
+    } else {
+      dispatch(
+        updateLoanTypeAction({
+          loanId: state.admin.refloan.loanId,
+          loanType,
+          minimumAge,
+          maximumAge,
+        })
+      );
 
-    //we have to rest the from after date get updated..
-    setLoanType("");
-    setMinimumAge("");
-    setMaximumAge("");
+      setSuccessOperation(true);
+      setTimeout(() => setSuccessOperation(false), 4000);
+
+      //we have to rest the from after date get updated..
+      setLoanType("");
+      setMinimumAge("");
+      setMaximumAge("");
+    }
   };
   return (
     <div className="upsert">
@@ -141,13 +152,13 @@ export function LoanUpsert() {
               </div>
             </div>
 
-            <div className="mb-1">
+            <div className="mb-2">
               {state.admin.refloan.loanId ? (
                 <input
                   type="button"
                   className="btn btn-warning w-100"
                   value="Update Loan Program Data"
-                  onClick={() => updateLoanProgram()}
+                  onClick={(e) => updateLoanProgram(e)}
                 />
               ) : (
                 <input
