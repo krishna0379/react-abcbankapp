@@ -36,7 +36,7 @@ export function LoanList() {
   };
 
   return (
-    <div class="container-xxl loan-list">
+    <div class="container-xxl cbg">
       <>
         <div className="row">
           <div className="col-3 col-md-2 d-none d-md-block"></div>

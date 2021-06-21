@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 export function AdminHome() {
   return (
-    <div>
+    <div className="body">
       <div>
-        <h1>Welcome to Admin module</h1>
+        <h1 className="text-center">Welcome to Admin module</h1>
       </div>
       <div className="container">
         <div className="row">

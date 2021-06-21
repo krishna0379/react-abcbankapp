@@ -1,11 +1,5 @@
-import logo from "./logo.svg";
 import "./App.css";
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  useLocation,
-} from "react-router-dom";
+import { BrowserRouter as Route, Switch, useLocation } from "react-router-dom";
 import { LadHome } from "./components/Lad/LadHome";
 import { About } from "./components/About";
 import { Contact } from "./components/Contact";
@@ -21,15 +15,24 @@ import { LoanUpsert } from "./components/Admin/LoanUpsert";
 import { LoanList } from "./components/Admin/LoanList";
 import { AppNavBar } from "./common/AppNavBar";
 import { AdminHome } from "./components/Admin/AdminHome";
+import { useSelector } from "react-redux";
+import { Registration } from "./components/Registration";
 
 function App() {
   const location = useLocation();
+  const state = useSelector((state) => state);
   console.log(location);
   return (
     <>
       <AppNavBar />
-      {location.pathname.includes("admin") && <AdminHome />}
+      {location.pathname.includes("admin") && state.AdminLogin.loginAction && (
+        <AdminHome />
+      )}
+      {location.pathname.includes("admin") && !state.AdminLogin.loginAction && (
+        <Registration />
+      )}
       {location.pathname.includes("lad") && <LadHome />}
+      {/* {location.pathname.includes("admin") && <AdminHome />} */}
 
       <Switch>
         <Route path="/about">
@@ -48,11 +51,11 @@ function App() {
           <EmployeeList />
         </Route>
 
-        <Route path="/lad/ladlistpage">
+        <Route path="/lad/ladcustomerloanlistpage">
           <Lad />
         </Route>
 
-        <Route path="/lad/ladpage">
+        <Route path="/lad/lad-list-page">
           <Ladlist />
         </Route>
 

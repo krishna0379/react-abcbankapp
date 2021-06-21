@@ -9,12 +9,13 @@ export function About() {
             <img
               src="http://www.equatorias.com/wp-content/uploads/2018/02/upsc-coaching-1024x307.jpg"
               alt=""
+              width="960px"
             />
           </div>
         </div>
 
         <div className="container-fluid">
-          <div className="bg-info">
+          <div className="bg-info p-3">
             <div>
               <h2>ABOUT ABC BANK QUCIK LOAN SERVICE </h2>
               <br />
@@ -43,8 +44,8 @@ export function About() {
           </div>
         </div>
 
-        <div className="container-fluid">
-          <div>
+        <div className="container-fluid mt-3 ">
+          <div className="p-3">
             <h2>Our Values</h2>
             <br />
             <h4>
@@ -76,8 +77,8 @@ export function About() {
         </div>
 
         <div container-fluid>
-          <CardDeck>
-            <Card className="">
+          <CardDeck className="p-4">
+            <Card className="p-2">
               <Card.Img variant="top" src="" />
 
               <Card.Body>
@@ -104,7 +105,7 @@ export function About() {
                   </p>
                 </Card.Text>
               </Card.Body>
-              <Card.Footer className="bg-info">
+              <Card.Footer className="bg-warning">
                 <small className="text-muted ">About ABC Bank</small>
               </Card.Footer>
             </Card>
@@ -128,24 +129,24 @@ export function About() {
                   <br />
                   <br />
                   <p>
-                    <strong>1. </strong>
+                    <strong>1. Saptarshi Chakraborty </strong>
                   </p>
                   <br />
                   <p>
-                    <strong>2. </strong>
+                    <strong>2. M D V Ajay Kumar </strong>
                   </p>
                   <br />
                   <p>
-                    <strong>3. </strong>
+                    <strong>3. P Sai Krishna </strong>
                   </p>
                   <br />
                   <p>
-                    <strong>4. </strong>
+                    <strong>4. Prashant Phulera </strong>
                   </p>
                 </Card.Text>
               </Card.Body>
-              <Card.Footer className="bg-info ">
-                <small className="text-muted ">Team Abc Bank</small>
+              <Card.Footer className="bg-warning ">
+                <small className="text-muted">Team Abc Bank</small>
               </Card.Footer>
             </Card>
             <Card>
@@ -169,7 +170,7 @@ export function About() {
                   <input type="button" value="Email" className="btn btn-info" />
                 </Card.Text>
               </Card.Body>
-              <Card.Footer className="bg-info">
+              <Card.Footer className="bg-warning">
                 <small className="text-muted">Contact Us 24/7</small>
               </Card.Footer>
             </Card>

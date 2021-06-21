@@ -85,14 +85,14 @@ export function LoanUpsert() {
     }
   };
   return (
-    <div className="upsert">
+    <div className="cbg">
       <div className="row">
         <div className="col-3 col-md-3 d-none d-md-block"></div>
         <div className="col-12 col-md-6">
-          <h3 className="alert alert-info">
+          <h3 className="alert alert-info text-center p-3 m-2">
             {state.admin.refloan.loanId
-              ? "Update LoanProgram"
-              : "Create LoanProgram"}
+              ? "Update Loan Program"
+              : "Create Loan Program"}
           </h3>
 
           {/** BELOW THESE TWO TAGS MUST BE CONDITIOANL */}

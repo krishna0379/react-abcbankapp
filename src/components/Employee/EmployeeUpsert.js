@@ -1,6 +1,5 @@
 import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router";
 import {
   createEmployeeAction,
   updateEmployeeAction,
@@ -8,7 +7,6 @@ import {
 
 export function EmployeeUpsert() {
   const dispatch = useDispatch();
-  const history = useHistory();
   const fromEL = useRef();
   const state = useSelector((state) => state);
   console.log(state);
@@ -148,7 +146,7 @@ export function EmployeeUpsert() {
   };
   return (
     <div className="body">
-      <div className="row body">
+      <div className="row">
         <div className="col-3 col-md-3 d-none d-md-block"></div>
         <div className="col-12 col-md-6">
           <h3 className="alert alert-info">
@@ -342,22 +340,26 @@ export function EmployeeUpsert() {
               <div class="invalid-feedback">Kindly, Please Enter Your Age</div>
             </div>
 
-            <div className="mb-1">
-              <input
-                type="text"
-                value={panNumber}
-                onChange={(e) => updatePanNumber(e)}
-                className="form-control"
-                placeholder="Enter PAN Number"
-                maxLength="10"
-                minLength="10"
-                required
-              />
-              <div class="valid-feedback">Looks good!</div>
-              <div class="invalid-feedback">
-                Kindly, Please Enter Your Pan Number
+            {state.employee.refemp.id ? (
+              <div></div>
+            ) : (
+              <div className="mb-1">
+                <input
+                  type="text"
+                  value={panNumber}
+                  onChange={(e) => updatePanNumber(e)}
+                  className="form-control"
+                  placeholder="Enter PAN Number"
+                  maxLength="10"
+                  minLength="10"
+                  required
+                />
+                <div class="valid-feedback">Looks good!</div>
+                <div class="invalid-feedback">
+                  Kindly, Please Enter Your Pan Number
+                </div>
               </div>
-            </div>
+            )}
 
             <div className="mb-1">
               {state.employee.refemp.id ? (

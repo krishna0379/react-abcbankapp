@@ -14,12 +14,15 @@ export function Ladlist() {
     dispatch(GetAllLoanStatusAction());
   }, []);
 
+  setSuccessOperation(true);
+  setTimeout(() => setSuccessOperation(false), 4000);
+
   return (
-    <div className="bg-container">
+    <div className="bg-container cbg">
       <div className="row">
         <div className="col-3 col-md-2 d-none d-md-block"></div>
         <div className="col-12 col-md-8">
-          <h3 className="alert alert-warning text-center m-2">
+          <h3 className="alert alert-info text-center p-3 m-2">
             Customer Loan List
           </h3>
 
@@ -27,8 +30,8 @@ export function Ladlist() {
             <div className="alert alert-success">Opeation Success</div>
           )}
 
-          <table className="table table-success">
-            <thead className="table-bg-top">
+          <table className="table">
+            <thead className="table table-bordered table-dark">
               <tr>
                 <th scope="col">CUSTOMER ID</th>
                 <th scope="col">LOAN TYPE</th>
@@ -37,7 +40,7 @@ export function Ladlist() {
                 <th scope="col">STATUS</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className="table table-bordered table-success">
               {[...state.lad.list].map((item, index) => (
                 <tr key={index}>
                   <td className="item-style">{item.customerRefId}</td>

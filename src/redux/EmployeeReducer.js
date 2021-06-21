@@ -11,6 +11,7 @@ const EMPLOYEE_GET_ALL = "EMPLOYEE_GET_ALL";
 const EMPLOYEE_GET_BY_ID = "EMPLOYEE_GET_BY_ID";
 
 const REF_EMPLOYEE = "REF_EMPLOYEE";
+const SERVER_ERROR = "SERVER_ERROR";
 
 // ACTIONS ::
 
@@ -73,16 +74,21 @@ export function getAllEmployeeAction(payload) {
   // API CALL/BACKEND CALL / REDUX-THUNK IS THERE
   return async (dispatch) => {
     // WE HV TO CALL THE SPRINT1 / SPRING BOOT
-    const url =
-      "http://localhost:8090/api/customerloanrequest/allcustomerrecords";
+    try {
+      const url =
+        "http://localhost:8090/api/customerloanrequest/allcustomerrecords";
 
-    // HTTP Client / POSTMAN / SWAGGER
-    const response = await fetch(url);
-    const employeeList = await response.json();
-    console.log(employeeList);
+      // HTTP Client / POSTMAN / SWAGGER
+      const response = await fetch(url);
+      const employeeList = await response.json();
+      console.log(employeeList);
 
-    // Update the UI
-    dispatch({ type: EMPLOYEE_GET_ALL, payload: employeeList });
+      // Update the UI
+      dispatch({ type: EMPLOYEE_GET_ALL, payload: employeeList });
+    } catch (error) {
+      console.log(error);
+      dispatch({ type: SERVER_ERROR, payload: true });
+    }
   };
 }
 
@@ -130,6 +136,9 @@ export function EmployeeReducer(state = initState, action) {
 
     case REF_EMPLOYEE:
       return { ...state, refemp: action.payload };
+
+    case SERVER_ERROR:
+      return { ...state, error: action.payload };
 
     default:
       return state;

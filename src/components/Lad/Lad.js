@@ -25,11 +25,13 @@ export function Lad() {
   };
 
   return (
-    <div className="row bg-container">
+    <div className="row bg-container cbg">
       <div className="col-3 col-md-2 d-none d-md-block"></div>
       <div className="col-12 col-md-8">
         <div className="d-flex m-2">
-          <h1 className="m-2 text-info">Customer Loan Request Detailes</h1>
+          <h1 className="alert alert-info text-center p-3 m-2">
+            Customer Loan Request Detailes
+          </h1>
           <img
             src="https://www.pngkey.com/png/detail/334-3346704_request-form-icon.png"
             alt="image not found"
@@ -38,11 +40,13 @@ export function Lad() {
         </div>
 
         {successOperation && (
-          <div className="status-box">check status in loanlist page</div>
+          <div className="alert alert-primary">
+            check status in loanlist page
+          </div>
         )}
 
-        <table className="table table-success">
-          <thead className="table-bg-top">
+        <table className="table">
+          <thead className="table table-bordered table-dark">
             <tr>
               <th scope="col">#CUSTOMER ID</th>
               <th scope="col">AGE</th>
@@ -52,7 +56,7 @@ export function Lad() {
               <th scope="col">ACTION</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="table table-bordered table-success">
             {[...state.lad.list].map((item, index) => (
               <tr key={index}>
                 <th scope="row">{item.id}</th>
@@ -65,7 +69,7 @@ export function Lad() {
                   <input
                     type="button"
                     onClick={() => GetCustomerLoanRequestById(item)}
-                    value="verify"
+                    value="Verify"
                     className="btn btn-primary m-2"
                   />
                 </td>
